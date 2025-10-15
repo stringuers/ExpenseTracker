@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker - Sign In</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .back-to-welcome {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: #0984e3;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .back-to-welcome:hover {
+      color: #0873c4;
+    }
+  </style>
+</head>
+<body>
+  <a href="welcome.html" class="back-to-welcome">← Back to Welcome</a>
+  <div class="auth-page active" id="signin-page">
+    <div class="auth-container">
+      <h1>Financial Tracker</h1>
+      <h2>Sign In</h2>
+      <form id="signin-form" action="index.html">
+        <div class="form-group">
+          <label for="signin-email">Email</label>
+          <input type="email" id="signin-email" required />
+          <span class="error-message" id="email-error">Please enter a valid email address</span>
+        </div>
+        <div class="form-group">
+          <label for="signin-password">Password</label>
+          <input type="password" id="signin-password" required />
+          <span class="error-message" id="password-error">Password is required</span>
+          <a href="#" class="forgot-password">Forgot password?</a>
+        </div>
+        <div class="remember-me">
+          <input type="checkbox" id="remember" name="remember" />
+          <label for="remember">Remember me</label>
+        </div>
+        <button type="submit" class="auth-btn">Sign In</button>
+      </form>
+      <p>Don't have an account? <a href="sign-up.html" id="to-signup">Sign Up</a></p>
+    </div>
+  </div>
+</body>
+</html>

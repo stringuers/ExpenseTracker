@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker - Sign Up</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .back-to-welcome {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: #0984e3;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .back-to-welcome:hover {
+      color: #0873c4;
+    }
+  </style>
+</head>
+<body>
+  <a href="welcome.html" class="back-to-welcome">← Back to Welcome</a>
+  <div class="auth-page active" id="signup-page">
+    <div class="auth-container">
+      <h1>Financial Tracker</h1>
+      <h2>Sign Up</h2>
+      <form id="signup-form">
+        <div class="form-group">
+          <label for="signup-name">Full Name</label>
+          <input type="text" id="signup-name" required />
+          <span class="error-message" id="name-error">Name is required</span>
+        </div>
+        <div class="form-group">
+          <label for="signup-email">Email</label>
+          <input type="email" id="signup-email" required />
+          <span class="error-message" id="email-error">Please enter a valid email address</span>
+        </div>
+        <div class="form-group">
+          <label for="signup-password">Password</label>
+          <input type="password" id="signup-password" required />
+          <span class="error-message" id="password-error">Password must be at least 8 characters</span>
+        </div>
+        <div class="form-group">
+          <label for="signup-confirm-password">Confirm Password</label>
+          <input type="password" id="signup-confirm-password" required />
+          <span class="error-message" id="confirm-password-error">Passwords do not match</span>
+        </div>
+        <button type="submit" class="auth-btn">Sign Up</button>
+      </form>
+      <p>Already have an account? <a href="sign-in.html" id="to-signin">Sign In</a></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('signup-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('signup-name').value.trim();
+      const email = document.getElementById('signup-email').value.trim();
+      const password = document.getElementById('signup-password').value.trim();
+      const confirmPassword = document.getElementById('signup-confirm-password').value.trim();
+      
+      // Validate form
+      let isValid = true;
+      
+      if (!name) {
+        document.getElementById('name-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('name-error').style.display = 'none';
+      }
+      
+      if (!email || !email.includes('@')) {
+        document.getElementById('email-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('email-error').style.display = 'none';
+      }
+      
+      if (password.length < 8) {
+        document.getElementById('password-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('password-error').style.display = 'none';
+      }
+      
+      if (password !== confirmPassword) {
+        document.getElementById('confirm-password-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('confirm-password-error').style.display = 'none';
+      }
+      
+      if (isValid) {
+        // Store user data
+        localStorage.setItem('userName', name);
+        localStorage.setItem('userEmail', email);
+        localStorage.setItem('userPassword', password);
+        localStorage.setItem('userLoggedIn', 'true');
+        
+        // Redirect to index.html
+        window.location.href = 'index.html';
+      }
+    });
+  </script>
+</body>
+</html>
